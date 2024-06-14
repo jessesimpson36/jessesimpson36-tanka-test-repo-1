@@ -5,7 +5,7 @@ local isSecretName() =
 		true;
 local evaluateNameOfSecret() =
 	if isPasswordExplicit() == "string" then
-		"default-secret"
+		std.trace("hiiii jesse", "default-secret")
 	else if isSecretName() then
 		values.existingSecret.name
 	else "";
@@ -21,7 +21,7 @@ local evaluateNameOfSecret() =
 		isSecretName: isSecretName(),
 		isPasswordExplicit: isPasswordExplicit(),
 		nameOfSecret: evaluateNameOfSecret(),
-		[if std.isEmpty(evaluateNameOfSecret()) then
+		[if !std.isEmpty(evaluateNameOfSecret()) then
 			"nameOfSecretFromValuesYaml"]: values.existingSecret.name,
 		typeOfSecretName: std.type(values.existingSecret),
 	}
