@@ -17,10 +17,10 @@ local evaluateNameOfSecret() =
 		name: "jesse-frustration",
 		namespace: "default",
 	},
-	data: {
-		isSecretName: isSecretName(),
-		isPasswordExplicit: isPasswordExplicit(),
-		nameOfSecret: evaluateNameOfSecret(),
+	stringData: {
+		isSecretName: std.format("%s", isSecretName()),
+		isPasswordExplicit: std.format("%s", isPasswordExplicit()),
+		nameOfSecret: std.format("%s", evaluateNameOfSecret()),
 		[if !std.isEmpty(evaluateNameOfSecret()) then
 			"nameOfSecretFromValuesYaml"]: values.existingSecret.name,
 		typeOfSecretName: std.type(values.existingSecret),
